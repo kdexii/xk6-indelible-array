@@ -1,7 +1,6 @@
 package myextension
 
 import (
-	"context"
 	"fmt"
 
 	"go.k6.io/k6/js/modules"

@@ -1,20 +1,23 @@
-package myextension
+package indelible
 
 import (
-	"fmt"
-
 	"go.k6.io/k6/js/modules"
 )
-
-// Определение структуры, которая будет экспортироваться в k6
-type MyExtension struct{}
-
-// Метод, который можно вызывать из k6
-func (m *MyExtension) Hello(name string) string {
-	return fmt.Sprintf("Hello, %s!", name)
+type IndelibleArray struct{}
+func init() {
+	modules.Register("k6/x/xk6-indelible-array", new(IndelibleArray))
 }
 
-// Регистрация расширения в k6
-func init() {
-	modules.Register("k6/x/xk6-static-array", new(MyExtension))
+var indelibleArray []interface{} // global array
+
+func (m *IndelibleArray) InitIndelibleArray() {
+	indelibleArray = indelibleArray[:0]
+}
+
+func (m *IndelibleArray) PushToIndelibleArray(value interface{}) {
+	indelibleArray = append(indelibleArray, value) // Add value any format
+}
+
+func (m *IndelibleArray) GetIndelibleArray() []interface{}{
+	return indelibleArray
 }

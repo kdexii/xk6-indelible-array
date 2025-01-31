@@ -1,3 +1,3 @@
-module github.com/kdexii/xk6-static-array
+module github.com/kdexii/xk6-indelible-array
 
-go 1.21
+go 1.23
